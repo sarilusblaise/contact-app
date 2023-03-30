@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Root from './routes/root';
 import ErrorPage from './error-page';
+import Contact from './routes/contact';
 
 //createBrowserRoute : wraps our routes(url), It uses the DOM History API to update the URL and manage the history stack.
 const router = createBrowserRouter([
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
 		path: '/',
 		element: <Root />,
 		errorElement: <ErrorPage />,
+	},
+	{
+		path: 'contacts/:contactId',
+		element: <Contact />,
 	},
 ]);
 
