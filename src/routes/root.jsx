@@ -1,10 +1,16 @@
-import { Outlet, Link, useLoaderData } from 'react-router-dom';
-import { getContacts } from '../contact';
+import { Outlet, Link, useLoaderData, Form } from 'react-router-dom';
+import { getContacts, createContact } from '../contact';
 //get contacts from the the getContact API , contact will stay in sync with the root route
 export async function loader() {
 	const contacts = await getContacts();
 	return { contacts };
 }
+
+export async function action() {
+	const contact = await createContact();
+	return { contact };
+}
+
 export default function Root() {
 	const { contacts } = useLoaderData();
 	return (
@@ -23,9 +29,9 @@ export default function Root() {
 						<div id='search-spinner' aria-hidden hidden={true} />
 						<div className='sr-only' aria-live='polite'></div>
 					</form>
-					<form method='post'>
+					<Form method='post'>
 						<button type='submit'>New</button>
-					</form>
+					</Form>
 				</div>
 				<nav>
 					{contacts.length ? (
