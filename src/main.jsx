@@ -8,6 +8,9 @@ import Root, {
 } from './routes/root';
 import ErrorPage from './error-page';
 import Contact from './routes/contact';
+import { loader as contactLoader } from './routes/contact';
+import { loader as editLoader } from './routes/edit';
+import EditContact from './routes/edit';
 
 //createBrowserRoute : wraps our routes(url), It uses the DOM History API to update the URL and manage the history stack.
 const router = createBrowserRouter([
@@ -21,6 +24,12 @@ const router = createBrowserRouter([
 			{
 				path: 'contacts/:contactId',
 				element: <Contact />,
+				loader: contactLoader,
+			},
+			{
+				path: 'contacts/:contactId/edit',
+				element: <EditContact />,
+				loader: editLoader,
 			},
 		],
 	},
