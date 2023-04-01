@@ -11,7 +11,7 @@ import Contact from './routes/contact';
 import { loader as contactLoader } from './routes/contact';
 import { loader as editLoader } from './routes/edit';
 import EditContact, { action as editAction } from './routes/edit';
-
+import { action as destroyAction } from './routes/destroy';
 //createBrowserRoute : wraps our routes(url), It uses the DOM History API to update the URL and manage the history stack.
 const router = createBrowserRouter([
 	{
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
 				element: <EditContact />,
 				loader: editLoader,
 				action: editAction,
+			},
+			{
+				path: 'contacts/:contactId/destroy',
+				action: destroyAction,
 			},
 		],
 	},
